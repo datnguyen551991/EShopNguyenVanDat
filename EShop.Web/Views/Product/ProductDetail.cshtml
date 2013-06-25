@@ -1,0 +1,21 @@
+﻿@using Eshop.Web.Configuration;
+@using EShop.Web.Models;
+@model ProductPageViewModel
+
+@{
+    ViewBag.Title = "ProductDetail";
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+}
+
+    <div class="product-overview">
+
+        <img src="@Url.Content(Config.ProductImagePath+Model.product.ImageURL)"><br />   
+            <b class="item-name"> @Model.product.Name</b><br />
+            <span class="item-old-price">Price:@Model.product.Price.ToString("C")</span><br />
+            <b>Description:&nbsp;</b>@Model.product.Description<br /><br />
+        <div class="cart-wishlist-container">
+        <input type="number" id="quantity" min="1" max="30" value="1">
+            <input type="button" id="add-to-cart" class="options" value="Add to Cart" onclick="addToCart()" />
+            <input type="button" id="add-to-wish-list" class="options" value="Add to Wish List" onclick="viewCart()"/>
+        </div>
+    </div>

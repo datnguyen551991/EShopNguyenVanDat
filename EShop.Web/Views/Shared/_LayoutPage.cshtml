@@ -1,0 +1,149 @@
+﻿@using EShop.Web.Models;
+
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="@Url.Content("../../Content/Site.css")" rel="stylesheet" type="text/css" />
+    <link href="../../Scripts/jquery-1.7.1.min.js" rel="stylesheet" type="text/css" />
+    <link href="../../Content/css/footer.css" rel="stylesheet" type="text/css" />
+    <link href="../../Content/css/header.css" rel="stylesheet" type="text/css" />
+    <link href="../../Content/css/content.css" rel="stylesheet" type="text/css" />
+    <link href="../../Content/css/left.css" rel="stylesheet" type="text/css" />
+    <link href="../../Content/css/layout.css" rel="stylesheet" type="text/css" />
+    <link href="../../Content/css/shoppingcart.css" rel="stylesheet" type="text/css" />
+
+    <title>@ViewBag.Title</title>
+
+
+    <meta name="viewport" content="width=device-width" />
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            $(".signin").click(function (e) {
+                e.preventDefault();
+                $("fieldset#signin_menu").toggle();
+                $(".signin").toggleClass("menu-open");
+            });
+
+            $("fieldset#signin_menu").mouseup(function () {
+                return false
+            });
+            $(document).mouseup(function (e) {
+                if ($(e.target).parent("a.signin").length == 0) {
+                    $(".signin").removeClass("menu-open");
+                    $("fieldset#signin_menu").hide();
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+    <div id="container">
+        <div id="header">
+            <div id="topnav" class="topnav">
+                <!--<form name="search" action="" method="post" id="search">
+ 		    <input type="text" name="searchTxt" id="SearchTxt"  size="20" value="Search"/>
+            <input type="button" name="searchBtn" value="Search" id="searchBtn" /><br/>
+        </form>-->
+                <div id="shoppingCart">
+                    <summary>
+                        <h4>Shopping cart</h4>
+                        <span class="arrow"></span>
+                    </summary>
+                    <ul>
+                        <li>
+                            <span>2x <a href="#">Bottle of Awesomesauce</a></span> <strong>&euro;45,00</strong>
+                        </li>
+                        <li>
+                            <span>1x <a href="#">Stainless 12" frying pan</a></span> <strong>&euro;21,95</strong>
+                        </li>
+                        <li>
+                            <span>4x <a href="#">Super sausages</a></span> <strong>&euro;3,50</strong>
+                        </li>
+                        <li>
+                            <span>1x <a href="#">Stainless frying spoon</a></span> <strong>&euro;7,95</strong>
+                        </li>
+                    </ul>
+                    <p>
+                        <span>Products: <strong>8</strong></span> <span>Total: <strong>&euro;78,40</strong></span>
+                    </p>
+                    <a id="checkout" href="#">Checkout</a>
+                </div>
+                <a href="login" class="signin">
+                    <span>Sign in</span>
+                </a>
+                <fieldset id="signin_menu">
+                    <form method="post" id="signin" action="https://twitter.com/sessions">
+                        <label for="username">Username</label>
+                        <input id="username" name="username" value="" title="username" tabindex="4" type="text" />
+                        <p>
+                            <label for="password">Password</label>
+                            <input id="password" name="password" value="" title="password" tabindex="5" type="password" />
+                        </p>
+                        <p class="remember">
+                            <input id="signin_submit" value="Sign in" tabindex="6" type="submit" />
+                            <input id="remember" name="remember_me" value="1" tabindex="7" type="checkbox" />
+                            <label for="remember">Remember me</label>
+                        </p>
+                        <p class="forgot"><a href="#" id="resend_password_link">Forgot your password?</a> </p>
+                    </form>
+                </fieldset>
+            </div>
+            <div id="menu_h">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="#">Product</a></li>
+                    <li><a href="cart.html">Shoping Cart</a></li>
+                    <li><a href="#">Contact</a></li>
+                    <li><a href="#">About</a></li>
+                </ul>
+            </div>
+        </div>
+        <div id="left">
+            <div id="menuwrapper">
+                <ul>
+                    @{LayoutPageViewModel model = (LayoutPageViewModel)ViewData["LayoutPageViewModel"];}
+                    @foreach (var company in model.companies)
+                    {
+                        <li class="has-sub"><a href="#">@company.Name</a>
+                            <ul>
+                                @foreach (var category in company.Categories)
+                                {
+                                    <li><a href="#">@category.Name</a></li>
+                                }
+                            </ul>
+                        </li>
+                    }
+                    <li><a href="#">Others</a></li>
+                </ul>
+            </div>
+        </div>
+        <div id="content">
+            @RenderBody()
+        </div>
+        <div id="footer">
+            <ul>
+                <li><a href="#">Home </a></li>
+                <li><a href="#">| Introduction </a></li>
+                <li><a href="#">| LapTop </a></li>
+                <li><a href="#">| Desktop </a></li>
+                <li><a href="#">| Tablet </a></li>
+                <li><a href="#">| Contact </a></li>
+                <li><a href="#">| Career </a></li>
+            </ul>
+            <p>
+                <strong><font style="color: #F00"> DICE COMPUTER SHOP </font></strong>
+                <br />
+                Adress: Unknow
+                <br />
+                Phone: 080000000- Fax:000000000000
+                <br />
+                Email: dicecomputershop@diceshop.com
+                <br />
+                Copyright © Dice Computer Shop 
+                <br />
+            </p>
+        </div>
+    </div>
+</body>
+</html>

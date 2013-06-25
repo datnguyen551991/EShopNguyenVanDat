@@ -1,0 +1,35 @@
+﻿@using Eshop.Web.Configuration;
+@using EShop.Web.Models;
+@model HomePageViewModel
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+}
+
+<div class="title">HOT PRODUCTS</div>
+<marquee behavior="scroll" onmouseout="this.start();" onmouseover="this.stop();" scrollamount="10">
+        <ul>
+        @foreach (var item in Model.hotProducts)
+        {
+            <li>
+                <a href="@Url.Action("ProductDetail", "Product", new { id = @item.Id })">
+                    <img src="@Config.ProductImagePath@item.ImageURL" height="150px" width="150px" alt="@item.Name"/><br/>
+                 @item.Name<br/>
+            	Price:@item.Price.ToString("C") 
+                    </a>
+           </li>                         }
+        </ul>
+    </marquee>
+<div class="title">PRODUCTS</div>
+<ul>
+    @foreach (var item in Model.frontProducts)
+    {
+        <li><a href="@Url.Action("ProductDetail", "Product", new { id = @item.Id })">
+            <img src="@Config.ProductImagePath@item.ImageURL" height="150px" width="150px" alt="@item.Name"/><br />
+            @item.Name<br />
+            Price:@item.Price.ToString("C")</a>
+        </li>
+    }
+</ul>
+<a href="#">1</a> &nbsp;<a href="#"> 2</a>

@@ -1,0 +1,56 @@
+﻿#container {
+	        width:1200px;
+	        margin:auto;
+}
+#header
+    {
+	        margin:5px;
+	        padding:1px;
+	        background-image:url(../images/computer-logo-19206799.jpg);
+	        background-repeat: no-repeat;	 
+	        overflow:hidden;    
+  }
+
+#left
+{
+	height:1184px; /* use for menu_v same height with main*/
+	width:200px;
+	border: 1px dotted #006;
+	float:left;
+	margin:5px;
+	background-color:#5AF;
+	padding:1px;
+}
+ #content
+{
+	float:right;	
+	border: 1px dotted #006;
+	width:950px;
+	margin:5px;
+	padding:1px;
+}
+
+#footer
+{
+	border: 1px dotted #006;
+	margin:5px;
+	clear:both;
+	padding:5px;
+	background-color:#5AF;
+}
+
+.title
+{
+	background-color:#369;
+	text-transform:uppercase;
+	font-weight:bolder;
+	color:#FFF;
+	clear:both;
+}
+
+.button-link {
+    padding: 10px 15px;
+    background: #4479BA;
+    color: #FFF;
+}
+
